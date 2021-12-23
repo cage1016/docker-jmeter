@@ -1,5 +1,5 @@
 # Base image
-FROM ubuntu:18.04
+FROM s390x/ubuntu:18.04
 
 # The author
 LABEL maintainer="KAI CHU CHUNG (https://kaichu.io)"
@@ -12,7 +12,7 @@ ARG CMDRUNNER_VERSION=2.2
 ENV JMETER_HOME=/opt/apache-jmeter-${JMETER_VER}
 ENV	JMETER_BIN=${JMETER_HOME}/bin
 ENV JMETER_PLUGINS_DOWNLOAD_URL https://repo1.maven.org/maven2/kg/apc
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-s390x/
 ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Install dependencies

@@ -1,6 +1,7 @@
 .PHONY: run-x86
 run-x86: ## run x86 jmeter test
 	@echo "Running x86 jmeter test"
+
 	TARGET_HOST=localhost \
 	TARGET_PORT=8080 \
 	THREADS=20 \
@@ -14,6 +15,7 @@ run-x86: ## run x86 jmeter test
 .PHONY: run-s390
 run-s390x: ## run-s390 jmeter test
 	@echo "Running s390 jmeter test"
+
 	DAEMON=podman \
 	TARGET_HOST=localhost \
 	TARGET_PORT=8080 \
@@ -28,16 +30,18 @@ run-s390x: ## run-s390 jmeter test
 .PHONY: build-x86
 build-x86: ## build-x86 jmeter container image
 	@echo "Building x86 jmeter container image"
+
 	docker build \
 		--build-arg JMETER_VERSION=5.4.1 \
 		--build-arg JMETER_PLUGINS_MANAGER_VERSION=1.3 \
 		--build-arg CMDRUNNER_VERSION=2.2 \
 		-t "ghcr.io/cage1016/jmeter:5.4.1" \
-		-f Dockerfile.x86 .
+		-f Dockerfile .
 
 .PHONY: build-s390x
 build-s390x: ## build-s390x jmeter container image
 	@echo "Building s390x jmeter container image"
+
 	JMETER_VERSION=5.4.1 \
 	JMETER_PLUGINS_MANAGER_VERSION=1.3 \
 	CMDRUNNER_VERSION=2.2 \
@@ -46,7 +50,7 @@ build-s390x: ## build-s390x jmeter container image
 		--build-arg JMETER_PLUGINS_MANAGER_VERSION=1.3 \
 		--build-arg CMDRUNNER_VERSION=2.2 \
 		-t "ghcr.io/cage1016/jmeter-s390x:5.4.1" \
-		-f Dockerfile .		
+		-f Dockerfile.s390x .		
 
 .PHONY: help
 help: ## this help
