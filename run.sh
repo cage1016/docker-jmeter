@@ -39,6 +39,6 @@ echo "See Raw test report in ${T_DIR}/${JMX_NAME}.jtl"
 echo "==== HTML Test Report ===="
 echo "See HTML test report in ${R_DIR}/index.html"
 
-# echo "==== Tar report ===="
-# tar czf ${T_DIR}/${TARGET_HOST}-${TARGET_PORT}-$(date +%s).tar.gz ${T_DIR}/${JMX_NAME}-jmeter.log ${T_DIR}/${JMX_NAME}.jtl ${R_DIR}
-# echo "See Tar file in ${T_DIR}/${TARGET_HOST}-${TARGET_PORT}-$(date +%s).tar.gz"
+echo "==== Tar report ===="
+tar czf ${T_DIR}/${TARGET_HOST}-${TARGET_PORT}-$(date +%s).tar.gz ${T_DIR}/${JMX_NAME}-jmeter.log ${T_DIR}/${JMX_NAME}.jtl ${R_DIR}
+echo "See Tar file in ${T_DIR}/${TARGET_HOST}-${TARGET_PORT}-$(date +%s).tar.gz"
