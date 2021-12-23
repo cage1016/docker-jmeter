@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TARGET_HOST=localhost
-TARGET_PORT=8080
+TARGET_HOST=${TARGET_HOST:-"localhost"}
+TARGET_PORT=${TARGET_PORT:-"8080"}
 DAEMON=${DAEMON:-"docker"}
 
 NAME="jmeter"

@@ -12,7 +12,7 @@ run-x86: ## run x86 jmeter test
 	./run.sh
 
 .PHONY: run-s390
-run-s390: ## run-s390 jmeter test
+run-s390x: ## run-s390 jmeter test
 	@echo "Running s390 jmeter test"
 	DAEMON=podman \
 	TARGET_HOST=localhost \
