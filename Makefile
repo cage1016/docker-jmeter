@@ -8,7 +8,7 @@ run-x86: ## run x86 jmeter test
 	DURATION=60 \
 	JMETER=ghcr.io/cage1016/jmeter \
 	JMETER_VERSION=5.4.1 \
-	JMX=vb.jmx \
+	JMX=ap.jmx \
 	./run.sh
 
 .PHONY: run-s390
@@ -22,7 +22,7 @@ run-s390: ## run-s390 jmeter test
 	DURATION=60 \
 	JMETER=ghcr.io/cage1016/jmeter-s390x \
 	JMETER_VERSION=5.4.1 \
-	JMX=vb.jmx \
+	JMX=ap.jmx \
 	./run.sh
 
 .PHONY: build-x86
