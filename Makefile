@@ -32,11 +32,11 @@ build-x86: ## build-x86 jmeter container image
 	@echo "Building x86 jmeter container image"
 
 	docker build \
-		--build-arg JMETER_VERSION=5.4.1 \
-		--build-arg JMETER_PLUGINS_MANAGER_VERSION=1.3 \
-		--build-arg CMDRUNNER_VERSION=2.2 \
-		-t "ghcr.io/cage1016/jmeter:5.4.1" \
-		-f Dockerfile .
+	--build-arg JMETER_VERSION=5.4.1 \
+	--build-arg JMETER_PLUGINS_MANAGER_VERSION=1.3 \
+	--build-arg CMDRUNNER_VERSION=2.2 \
+	-t "ghcr.io/cage1016/jmeter:5.4.1" \
+	-f Dockerfile .
 
 .PHONY: build-s390x
 build-s390x: ## build-s390x jmeter container image
@@ -46,11 +46,11 @@ build-s390x: ## build-s390x jmeter container image
 	JMETER_PLUGINS_MANAGER_VERSION=1.3 \
 	CMDRUNNER_VERSION=2.2 \
 	podman build \
-		--build-arg JMETER_VERSION=5.4.1 \
-		--build-arg JMETER_PLUGINS_MANAGER_VERSION=1.3 \
-		--build-arg CMDRUNNER_VERSION=2.2 \
-		-t "ghcr.io/cage1016/jmeter-s390x:5.4.1" \
-		-f Dockerfile.s390x .		
+	--build-arg JMETER_VERSION=5.4.1 \
+	--build-arg JMETER_PLUGINS_MANAGER_VERSION=1.3 \
+	--build-arg CMDRUNNER_VERSION=2.2 \
+	-t "ghcr.io/cage1016/jmeter-s390x:5.4.1" \
+	-f Dockerfile.s390x .		
 
 .PHONY: help
 help: ## this help
