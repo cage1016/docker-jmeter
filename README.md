@@ -35,7 +35,7 @@ Jmeter Docker for x86 and s390x
 
 1. Run Jmeter with Docker
     ```sh
-    $ ./jmeter.sh
+    $ ./jmeter.sh -h
     Error: Please specify JMX using -f.
     Usage: jmeter.sh [-d <deamon>] [-i <jmeter_docker_image>] [-f <jmx_file>] [-t <test_folder>] [-z <enable_tar_html>]     [-l <jmeterVariablesList>]
      -d : Deamon, docker/podman (default: docker)
@@ -49,7 +49,7 @@ Jmeter Docker for x86 and s390x
       Example2: jmeter.sh -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx
       Example3: jmeter.sh -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx -l prop01=XXX,prop02=YYY
     ```
-1. Run test `ap.jmx`
+2. Run test `ap.jmx`
     ```bash
     $ ./jmeter.sh -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx -t ap -z true -l TARGET_HOST=localhost,TARGET_PORT=8080,THREADS=1,RAMD_UP=1,DURATION=10
     
