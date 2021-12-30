@@ -38,10 +38,10 @@ createSubCommand2(){
 }
 
 showHelp(){
-	echo "Usage: ${scriptName} [-d <deamon>] [-i <jmeter_docker_image>] [-f <jmx_file>] [-t <test_folder>] [-z <enable_tar_html>] [-l <jmeterVariablesList>]"
-	echo " -d : Deamon, docker/podman (default: docker)"
+	echo "Usage: ${scriptName} [-d <daemon>] [-i <jmeter_docker_image>] [-f <jmx_file>] [-t <test_folder>] [-z <enable_tar_html>] [-l <jmeterVariablesList>]"
+	echo " -d : Daemon, docker/podman (default: docker)"
 	echo " -t : Test directory (default: ./tmp)"
-	echo " -i : Jmeter docker image"
+	echo " -i : Jmeter docker image (default: ghcr.io/cage1016/jmeter:5.4.1)"
 	echo " -f : Specify JMX file"
 	echo " -l : Specify env list of Jmeter in following format: prop01=XXX,bbb=YYY,ccc=ZZZ"
 	echo " -z : Enable tar html report (default: false)"
@@ -49,6 +49,7 @@ showHelp(){
 	echo "  Example1: ${scriptName} -f ap.jmx"
 	echo "  Example2: ${scriptName} -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx"
 	echo "  Example3: ${scriptName} -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx -l prop01=XXX,prop02=YYY"
+	echo "  Example4: ${scriptName} -d podman -f ap.jmx -z true -l prop01=XXX,prop02=YYY"
 	echo ""
 	exit 1
 }
@@ -83,7 +84,7 @@ do
 				showHelp
 				exit 1
 			elif [[ "$2" != "docker" ]] && [[ "$2" != "podman" ]]; then
-				echo "Error: Deamon must be \"docker\" or \"podman\""
+				echo "Error: Daemon must be \"docker\" or \"podman\""
 				showHelp
 				exit 1
 			else
@@ -142,7 +143,7 @@ do
 				showHelp
 				exit 1
 			elif [[ "$2" != "true" ]] && [[ "$2" != "false" ]]; then
-				echo "Error: Deamon must be \"true\" or \"false\""
+				echo "Error: Daemon must be \"true\" or \"false\""
 				showHelp
 				exit 1
 			else
@@ -186,10 +187,10 @@ if [[ ${flag_i} -ne 0 ]]; then
 	jmeterDocker=${arg_i}
 fi
 
-# deamon
-deamon="docker"
+# daemon
+daemon="docker"
 if [[ ${flag_d} -ne 0 ]]; then
-	deamon=${arg_d}
+	daemon=${arg_d}
 fi
 
 # tar.gz
@@ -213,11 +214,11 @@ if [[ ${flag_l} -ne 0 ]]; then
 fi
 
 echo ""
-echo ${deamon} run --rm --name jmeter --network host -i -v $\{PWD\}:$\{PWD\} -w $\{PWD\} ${jmeterDocker} \
+echo ${daemon} run --rm --name jmeter --network host -i -v $\{PWD\}:$\{PWD\} -w $\{PWD\} ${jmeterDocker} \
 	${jmxName} -l ${testFolder}/jmeter.jtl -j ${testFolder}/jmeter.log ${subCommand} -o ${rDir} -e
 echo ""
 
-eval ${deamon} run --rm --name jmeter --network host -i -v ${PWD}:${PWD} -w ${PWD} ${jmeterDocker} ${jmxName} -l ${testFolder}/jmeter.jtl -j ${testFolder}/jmeter.log ${subCommand} -o ${rDir} -e
+eval ${daemon} run --rm --name jmeter --network host -i -v ${PWD}:${PWD} -w ${PWD} ${jmeterDocker} ${jmxName} -l ${testFolder}/jmeter.jtl -j ${testFolder}/jmeter.log ${subCommand} -o ${rDir} -e
 
 echo ""
 echo "==== jmeter.log ===="
