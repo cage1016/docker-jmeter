@@ -1,7 +1,7 @@
 .PHONY: run-x86
 run-x86: ## run x86 jmeter test
 	@echo "Running x86 jmeter test"
-	./jmeter.sh -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx -t ap -l OUTPUT_FOLDER=$(PWD)/ap,TARGET_HOST=localhost,TARGET_PORT=8080,THREADS=10,RAMD_UP=10,DURATION=20
+	./jmeter.sh -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx -t ap -l TARGET_HOST=localhost,TARGET_PORT=8080,THREADS=10,RAMD_UP=10,DURATION=20
 
 .PHONY: run-s390
 run-s390x: ## run-s390 jmeter test
