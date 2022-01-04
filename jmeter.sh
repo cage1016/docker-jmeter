@@ -1,5 +1,31 @@
 #!/usr/bin/env bash
 
+## Copyright (c) 2021 https://kaichu.io All Rights Reserved.
+##__author__ = 'KAI CHU CHUNG'
+##----------------------------------------------------------
+## run jmeter container for bash shell
+
+## Reference and Credits:
+## http://tldp.org/LDP/abs/html/parameter-substitution.html
+## https://stackoverflow.com/questions/14370133/is-there-a-way-to-create-key-value-pairs-in-bash-script#14371026
+## https://stackoverflow.com/questions/5499472/specify-command-line-arguments-like-name-value-pairs-for-shell-script
+
+## @Example:
+## $ ./jmeter.sh -h
+## Usage: jmeter.sh [-d <daemon>] [-i <jmeter_docker_image>] [-f <jmx_file>] [-t <test_folder>] [-z <enable_tar_html>] [-l <jmeterVariablesList>]
+##  -d : Daemon, docker/podman (default: docker)
+##  -t : Test directory (default: ./tmp)
+##  -i : Jmeter docker image (default: ghcr.io/cage1016/jmeter:5.4.1)
+##  -f : Specify JMX file
+##  -l : Specify env list of Jmeter in following format: prop01=XXX,bbb=YYY,ccc=ZZZ
+##  -z : Enable tar html report (default: false)
+##  
+##   Example1: jmeter.sh -f ap.jmx
+##   Example2: jmeter.sh -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx
+##   Example3: jmeter.sh -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx -l prop01=XXX,prop02=YYY
+##   Example4: jmeter.sh -d podman -f ap.jmx -z true -l prop01=XXX,prop02=YYY
+##----------------------------------------------------------
+
 scriptName=$(basename $0)
 
 ### check whether string is "option" (stats with "-")
