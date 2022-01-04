@@ -1,12 +1,12 @@
 .PHONY: run-x86
 run-x86: ## run x86 jmeter test
 	@echo "Running x86 jmeter test"
-	./jmeter.sh -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx -t xx -z true -l TARGET_HOST=localhost,TARGET_PORT=8080,THREADS=1,RAMD_UP=1,DURATION=10
+	./jmeter.sh -i ghcr.io/cage1016/jmeter:5.4.1 -f ap.jmx -t ap -l OUTPUT_FOLDER=$(PWD)/ap,TARGET_HOST=localhost,TARGET_PORT=8080,THREADS=10,RAMD_UP=10,DURATION=20
 
 .PHONY: run-s390
 run-s390x: ## run-s390 jmeter test
 	@echo "Running s390 jmeter test"
-	./jmeter.sh -i ghcr.io/cage1016/jmeter-s390x:5.4.1 -d podman -f ap.jmx -t xx -z true -l TARGET_HOST=localhost,TARGET_PORT=8080,THREADS=1,RAMD_UP=1,DURATION=10
+	./jmeter.sh -i ghcr.io/cage1016/jmeter-s390x:5.4.1 -d podman -f ap.jmx -t xx -l OUTPUT_FOLDER=$(PWD)/xx,TARGET_HOST=localhost,TARGET_PORT=8080,THREADS=10,RAMD_UP=10,DURATION=20
 
 .PHONY: build-x86
 build-x86: ## build-x86 jmeter container image
