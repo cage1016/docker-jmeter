@@ -40,7 +40,8 @@ RUN wget ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-manager/${JMETER_PLUGINS_
  && cd ${JMETER_HOME}/bin && ./PluginsManagerCMD.sh install jpgc-cmd \
  && cd ${JMETER_HOME}/bin && ./PluginsManagerCMD.sh install jpgc-casutg \
  && cd ${JMETER_HOME}/bin && ./PluginsManagerCMD.sh install jpgc-json \
- && cd ${JMETER_HOME}/bin && ./PluginsManagerCMD.sh install jpgc-graphs-additional \
+ && cd ${JMETER_HOME}/bin && ./PluginsManagerCMD.sh install jpgc-perfmon \
+ && cd ${JMETER_HOME}/bin && ./PluginsManagerCMD.sh install jpgc-graphs-basic \
  && cd ${JMETER_HOME}/bin && ./PluginsManagerCMD.sh status \
 
 #Remove G1GC algorithm as it is unimplemented in OpenJDK zero

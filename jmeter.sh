@@ -205,7 +205,7 @@ if [[ ${flag_t} -ne 0 ]]; then
 	testFolder=${arg_t}
 fi
 rDir=${testFolder}/report
-rm -rf ${rDir} ${testFolder}/jmeter.jtl ${testFolder}/jmeter.log > /dev/null 2>&1
+rm -rf ${rDir} ${testFolder}/*.jtl ${testFolder}/*.log > /dev/null 2>&1
 mkdir -p ${rDir}
 
 subCommand=""
@@ -232,6 +232,6 @@ echo "See HTML test report in ${rDir}/index.html"
 
 if [[ ${enbaleTargz} == "true" ]]; then
 	echo "==== Tar report ===="
-	tar czf ${testFolder}/$(date +%s).tar.gz ${testFolder}/jmeter.log ${testFolder}/jmeter.jtl ${rDir}
+	tar czf ${testFolder}/$(date +%s).tar.gz ${testFolder}/*.log ${testFolder}/*.jtl ${rDir}
 	echo "See Tar file in ${testFolder}/$(date +%s).tar.gz"
 fi
