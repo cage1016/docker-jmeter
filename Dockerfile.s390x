@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
     openjdk-11-jdk-headless \
     tar \
     wget \
+    imagemagick \
     ;
 
 # Download from git and build
